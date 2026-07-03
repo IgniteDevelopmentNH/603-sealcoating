@@ -1,11 +1,12 @@
 :root {
-  --black: #151515;
+  --black: #0d0d0d;
   --charcoal: #242424;
   --gray: #f2f2ef;
   --muted: #66645f;
   --white: #ffffff;
-  --yellow: #f4c542;
-  --yellow-dark: #c9971c;
+  --yellow: #ecae07;
+  --yellow-dark: #b88705;
+  --green: #565e32;
   --line: #dedbd2;
   --max-width: 1120px;
 }
@@ -51,18 +52,10 @@ a {
   text-decoration: none;
 }
 
-.logo-mark {
-  display: inline-grid;
-  place-items: center;
-  width: 48px;
-  height: 36px;
-  color: var(--black);
-  background: var(--yellow);
-  border: 2px solid var(--black);
-}
-
-.logo-text {
-  font-size: 1.1rem;
+.logo-img {
+  display: block;
+  height: 48px;
+  width: auto;
 }
 
 .site-nav {
@@ -104,6 +97,22 @@ a {
   grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.7fr);
   align-items: center;
   gap: 42px;
+  padding: 48px 40px;
+  background-image: linear-gradient(100deg, rgba(13, 13, 13, 0.85) 0%, rgba(13, 13, 13, 0.6) 45%, rgba(13, 13, 13, 0.25) 75%), url("images/job-1.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.hero .eyebrow {
+  color: var(--yellow);
+}
+
+.hero-content h1 {
+  color: var(--white);
+}
+
+.hero-text {
+  color: #e7e5df;
 }
 
 .hero-content h1,
@@ -191,6 +200,21 @@ a {
   padding-left: 20px;
 }
 
+.hero-panel ul li::marker,
+.about-list ul li::marker {
+  color: var(--green);
+}
+
+.about-photo {
+  display: block;
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  margin: 20px 0;
+  border: 1px solid var(--line);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
+}
+
 .section-heading {
   max-width: 720px;
   margin-bottom: 30px;
@@ -243,17 +267,31 @@ a {
 }
 
 .gallery-item {
+  position: relative;
+  margin: 0;
   min-height: 210px;
-  display: grid;
-  place-items: center;
-  padding: 20px;
+  overflow: hidden;
+  border: 1px solid var(--charcoal);
+}
+
+.gallery-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 210px;
+  object-fit: cover;
+}
+
+.gallery-item figcaption {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  padding: 6px 14px;
   color: var(--white);
   font-weight: 800;
-  text-align: center;
-  background:
-    linear-gradient(135deg, rgba(21, 21, 21, 0.9), rgba(64, 64, 64, 0.72)),
-    repeating-linear-gradient(45deg, #2f2f2f 0 14px, #3a3a3a 14px 28px);
-  border: 1px solid var(--charcoal);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: rgba(13, 13, 13, 0.75);
 }
 
 .quote {
@@ -378,8 +416,8 @@ a {
     padding-right: 18px;
   }
 
-  .logo-text {
-    font-size: 1rem;
+  .logo-img {
+    height: 40px;
   }
 
   .service-grid,
