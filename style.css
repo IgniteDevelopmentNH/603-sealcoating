@@ -93,14 +93,22 @@ a {
 
 .hero {
   min-height: 640px;
+  display: flex;
+  align-items: center;
+  background-image: linear-gradient(100deg, rgba(13, 13, 13, 0.85) 0%, rgba(13, 13, 13, 0.6) 45%, rgba(13, 13, 13, 0.25) 75%), url("images/job-1.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-inner {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
   display: grid;
   grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.7fr);
   align-items: center;
   gap: 42px;
-  padding: 48px 40px;
-  background-image: linear-gradient(100deg, rgba(13, 13, 13, 0.85) 0%, rgba(13, 13, 13, 0.6) 45%, rgba(13, 13, 13, 0.25) 75%), url("images/job-1.jpg");
-  background-size: cover;
-  background-position: center;
+  padding: 48px 20px;
 }
 
 .hero .eyebrow {
@@ -174,7 +182,6 @@ a {
 }
 
 .hero-panel,
-.service-card,
 .about-list,
 .contact-card {
   background: var(--white);
@@ -205,16 +212,6 @@ a {
   color: var(--green);
 }
 
-.about-photo {
-  display: block;
-  width: 100%;
-  height: 260px;
-  object-fit: cover;
-  margin: 20px 0;
-  border: 1px solid var(--line);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
-}
-
 .section-heading {
   max-width: 720px;
   margin-bottom: 30px;
@@ -239,12 +236,64 @@ a {
 }
 
 .service-card {
-  padding: 24px;
+  min-height: 200px;
+  perspective: 1000px;
+  cursor: pointer;
+  outline: none;
 }
 
-.service-card p {
+.service-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
+}
+
+.service-card:hover .service-card-inner,
+.service-card:focus .service-card-inner,
+.service-card:focus-within .service-card-inner {
+  transform: rotateY(180deg);
+}
+
+.service-card-front,
+.service-card-back {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  text-align: center;
+  border: 1px solid var(--line);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.service-card-front {
+  background: var(--white);
+  border-top: 4px solid var(--yellow);
+}
+
+.service-card-front h3 {
   margin: 0;
-  color: var(--muted);
+}
+
+.service-card-back {
+  background: var(--black);
+  color: var(--white);
+  transform: rotateY(180deg);
+}
+
+.service-card-back p {
+  margin: 0;
+}
+
+.service-card:focus-visible .service-card-front,
+.service-card:focus-visible .service-card-back {
+  outline: 3px solid var(--yellow-dark);
+  outline-offset: 2px;
 }
 
 .about,
@@ -388,7 +437,7 @@ a {
     display: flex;
   }
 
-  .hero,
+  .hero-inner,
   .about,
   .contact,
   .quote-form {
@@ -397,6 +446,9 @@ a {
 
   .hero {
     min-height: auto;
+  }
+
+  .hero-inner {
     padding-top: 52px;
   }
 
