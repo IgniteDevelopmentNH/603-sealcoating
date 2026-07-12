@@ -16,45 +16,64 @@
   -->
 
   <header class="site-header">
+    <nav class="site-nav-left" aria-label="Main navigation">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+    </nav>
+
     <a class="logo" href="#top" aria-label="603 Sealcoating home">
       <img class="logo-img" src="images/logo.png" alt="603 Sealcoating LLC">
     </a>
 
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-      Menu
-    </button>
-
-    <nav class="site-nav" id="site-nav" aria-label="Main navigation">
-      <a href="#services">Services</a>
-      <a href="#about">About</a>
-      <a href="#gallery">Gallery</a>
+    <nav class="site-nav-right" aria-label="Main navigation">
       <a href="#quote">Quote</a>
       <a href="#contact">Contact</a>
     </nav>
+
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      Menu
+    </button>
   </header>
 
   <main id="top">
     <section class="hero">
       <div class="hero-inner">
         <div class="hero-content">
-          <p class="eyebrow">Local asphalt care</p>
-          <h1>Sealcoating that keeps driveways looking sharp and protected.</h1>
+          <h1>Sealcoating that keeps driveways looking <strong><em>sharp</em></strong> and <strong><em>protected</em></strong>.</h1>
           <p class="hero-text">
             603 Sealcoating helps homeowners and small businesses protect asphalt surfaces from weather, wear, and everyday use.
           </p>
-          <div class="hero-actions">
-            <a class="button primary" href="#quote">Request a Free Quote</a>
-            <a class="button secondary" href="#services">View Services</a>
-          </div>
         </div>
-        <div class="hero-panel" aria-label="Service highlights">
-          <p class="panel-title">Booking now for the May-October season</p>
-          <ul>
-            <li>Asphalt sealcoating</li>
-            <li>Hot rubber crack filling</li>
-            <li>Patch repair</li>
-            <li>Chemical spill treatment</li>
-          </ul>
+        <div class="hero-actions">
+          <a class="button primary" href="#quote">Request a Free Quote</a>
+        </div>
+        <div class="carousel">
+          <div class="carousel-track">
+            <div class="carousel-slide">
+              <img src="images/before-1.jpg" alt="Driveway before sealcoating - cracked and weathered">
+              <span class="carousel-label before">Before</span>
+            </div>
+            <div class="carousel-slide">
+              <img src="images/after-1.jpg" alt="Same driveway after sealcoating - smooth black finish">
+              <span class="carousel-label after">After</span>
+            </div>
+            <div class="carousel-slide">
+              <img src="images/before-2.jpg" alt="Another driveway before sealcoating">
+              <span class="carousel-label before">Before</span>
+            </div>
+            <div class="carousel-slide">
+              <img src="images/after-2.jpg" alt="Same driveway after sealcoating">
+              <span class="carousel-label after">After</span>
+            </div>
+          </div>
+          <button class="carousel-prev" aria-label="Previous image">❮</button>
+          <button class="carousel-next" aria-label="Next image">❯</button>
+          <div class="carousel-dots">
+            <button class="carousel-dot active" aria-label="Go to slide 1" data-slide="0"></button>
+            <button class="carousel-dot" aria-label="Go to slide 2" data-slide="1"></button>
+            <button class="carousel-dot" aria-label="Go to slide 3" data-slide="2"></button>
+            <button class="carousel-dot" aria-label="Go to slide 4" data-slide="3"></button>
+          </div>
         </div>
       </div>
     </section>
@@ -112,33 +131,6 @@
           <li>Extends the life of your asphalt</li>
           <li>Shields surfaces from oil and gas damage</li>
         </ul>
-      </div>
-    </section>
-
-    <section class="section" id="gallery">
-      <div class="section-heading">
-        <p class="eyebrow">Gallery</p>
-        <h2>Recent work</h2>
-        <p>Real before-and-after results from recent sealcoating jobs.</p>
-      </div>
-
-      <div class="gallery-grid">
-        <figure class="gallery-item">
-          <img src="images/before-1.jpg" alt="Driveway before sealcoating, cracked and faded">
-          <figcaption>Before</figcaption>
-        </figure>
-        <figure class="gallery-item">
-          <img src="images/after-1.jpg" alt="Same driveway after sealcoating, smooth black finish">
-          <figcaption>After</figcaption>
-        </figure>
-        <figure class="gallery-item">
-          <img src="images/before-2.jpg" alt="Driveway before sealcoating, weathered asphalt">
-          <figcaption>Before</figcaption>
-        </figure>
-        <figure class="gallery-item">
-          <img src="images/after-2.jpg" alt="Same driveway after sealcoating, restored finish">
-          <figcaption>After</figcaption>
-        </figure>
       </div>
     </section>
 
