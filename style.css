@@ -114,8 +114,17 @@ a {
   display: grid;
   grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.7fr);
   align-items: center;
-  gap: 42px;
+  column-gap: 42px;
+  row-gap: 0;
   padding: 48px 20px;
+}
+
+.hero-copy {
+  grid-column: 1;
+}
+
+.carousel {
+  grid-column: 2;
 }
 
 .carousel {
@@ -240,11 +249,13 @@ a {
 .hero-content h1 {
   max-width: 780px;
   font-size: clamp(2rem, 6vw, 4.2rem);
+  margin-top: -20px;
+  margin-bottom: 16px;
 }
 
 .hero-text {
   max-width: 640px;
-  margin: 24px 0 0;
+  margin: 24px 0 12px;
   font-size: 1.2rem;
   color: var(--charcoal);
 }
@@ -261,7 +272,7 @@ a {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 32px;
+  margin-top: 8px;
 }
 
 .button {
@@ -523,6 +534,10 @@ a {
     gap: 20px;
   }
 
+  .hero-copy {
+    display: contents;
+  }
+
   .about,
   .contact,
   .quote-form {
@@ -566,6 +581,8 @@ a {
   .service-card-inner {
     transform: none !important;
     position: static;
+    min-height: 0;
+    height: auto;
   }
 
   .service-card-front,
@@ -615,7 +632,19 @@ a {
 
   .service-grid {
     grid-template-columns: 1fr;
-    gap: 8px;
+    gap: 0;
+    background: var(--white);
+    border: 1px solid var(--line);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
+    padding: 4px 20px;
+  }
+
+  .service-card {
+    padding: 14px 0;
+  }
+
+  .service-card + .service-card {
+    border-top: 1px solid var(--line);
   }
 
   .hero-actions,
