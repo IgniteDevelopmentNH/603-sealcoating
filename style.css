@@ -150,7 +150,7 @@ a {
   background: var(--white);
   border: 1px solid var(--line);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
-  transition: transform 0.5s ease, z-index 0s 0.25s;
+  transition: transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1), z-index 0s 0.28s;
   z-index: 1;
 }
 
@@ -494,6 +494,10 @@ a {
   font-size: 1.05rem;
 }
 
+.contact-card a {
+  text-decoration: none;
+}
+
 .contact-card p:last-child {
   margin-bottom: 0;
 }
@@ -517,6 +521,8 @@ a {
   .site-header {
     justify-content: center;
     gap: 0;
+    padding-top: calc(18px + env(safe-area-inset-top));
+    padding-bottom: 18px;
   }
 
   .site-nav-left,
@@ -526,6 +532,10 @@ a {
 
   .logo {
     flex: 0;
+  }
+
+  .logo-img {
+    height: 58px;
   }
 
   .hero-inner {
@@ -557,19 +567,32 @@ a {
   }
 
   .hero-content {
+    display: contents;
+  }
+
+  .hero-content h1 {
     order: 1;
+    margin-top: 0;
+  }
+
+  .hero {
+    overflow-x: clip;
   }
 
   .carousel {
     order: 2;
     aspect-ratio: 3 / 4;
-    max-width: 300px;
+    max-width: 280px;
     margin: 0 auto;
     align-self: center;
   }
 
-  .hero-actions {
+  .hero-text {
     order: 3;
+  }
+
+  .hero-actions {
+    order: 4;
     justify-content: center;
   }
 
@@ -614,11 +637,16 @@ a {
     color: var(--muted);
     margin: 0;
   }
+
+  .contact-card strong {
+    display: block;
+    margin-bottom: 2px;
+  }
 }
 
 @media (max-width: 560px) {
   .section {
-    padding: 52px 18px;
+    padding: 34px 18px;
   }
 
   .site-header {
@@ -627,7 +655,11 @@ a {
   }
 
   .logo-img {
-    height: 40px;
+    height: 56px;
+  }
+
+  .hero-inner {
+    padding-top: 28px;
   }
 
   .service-grid {
