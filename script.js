@@ -36,6 +36,16 @@ if (logo) {
   });
 }
 
+// After a quote submission, FormSubmit redirects back with ?sent=1.
+if (new URLSearchParams(window.location.search).get("sent") === "1") {
+  const note = document.querySelector(".quote .section-heading p");
+  if (note) {
+    note.textContent = "Thanks — your request was sent! We'll be in touch soon.";
+    note.style.color = "var(--yellow)";
+    note.style.fontWeight = "700";
+  }
+}
+
 (() => {
   const carousel = document.querySelector(".carousel");
   if (!carousel) return;

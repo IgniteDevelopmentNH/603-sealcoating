@@ -9,6 +9,13 @@
   --green: #565e32;
   --line: #dedbd2;
   --max-width: 1120px;
+  --font-display: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+  --font-body: "Barlow", Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background: var(--yellow);
+  color: var(--black);
 }
 
 * {
@@ -21,7 +28,7 @@ html {
 
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
   color: var(--black);
   background: #e8e6e1;
   line-height: 1.6;
@@ -41,6 +48,7 @@ a {
   padding: 16px max(20px, calc((100vw - var(--max-width)) / 2));
   background: #ffffff;
   border-bottom: 1px solid var(--line);
+  box-shadow: 0 4px 16px rgba(13, 13, 13, 0.06);
   gap: 40px;
 }
 
@@ -49,12 +57,19 @@ a {
   display: flex;
   align-items: center;
   gap: 50px;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-weight: 600;
 }
 
 .site-nav-left a,
 .site-nav-right a {
   text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-size: 1.05rem;
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
 }
 
 .site-nav-left a:hover,
@@ -62,6 +77,7 @@ a {
 .site-nav-right a:hover,
 .site-nav-right a:focus {
   color: var(--yellow-dark);
+  border-bottom-color: var(--yellow);
 }
 
 .logo {
@@ -96,6 +112,10 @@ a {
   padding: 72px 20px;
 }
 
+section[id] {
+  scroll-margin-top: 96px;
+}
+
 #services {
   padding-top: 40px;
 }
@@ -104,10 +124,30 @@ a {
   min-height: 640px;
   display: flex;
   align-items: center;
-  background: #e8e6e1;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(900px 480px at 85% -10%, rgba(236, 174, 7, 0.12), transparent 60%),
+    #e8e6e1;
+}
+
+.hero::before {
+  content: "603";
+  position: absolute;
+  right: -0.04em;
+  bottom: -0.3em;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(11rem, 28vw, 24rem);
+  line-height: 1;
+  color: rgba(13, 13, 13, 0.04);
+  pointer-events: none;
+  user-select: none;
 }
 
 .hero-inner {
+  position: relative;
+  z-index: 1;
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
@@ -167,10 +207,11 @@ a {
   padding: 6px 12px;
   background: rgba(0, 0, 0, 0.7);
   color: var(--white);
-  font-size: 0.875rem;
-  font-weight: 800;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.09em;
 }
 
 .carousel-label.after {
@@ -201,7 +242,8 @@ a {
 
 .carousel-prev:hover,
 .carousel-next:hover {
-  background: rgba(0, 0, 0, 0.8);
+  background: var(--yellow);
+  color: var(--black);
 }
 
 .carousel-prev {
@@ -233,24 +275,47 @@ a {
 }
 
 .carousel-dot.active {
-  background: var(--white);
+  background: var(--yellow);
 }
 
 
 .hero-content h1,
 .section-heading h2,
 .about-copy h2,
+.contact h2,
+.panel-title,
+.service-card h3,
+.about-list h3 {
+  font-family: var(--font-display);
+}
+
+.hero-content h1,
+.section-heading h2,
+.about-copy h2,
 .contact h2 {
   margin: 0;
-  line-height: 1.08;
-  letter-spacing: 0;
+  line-height: 1.04;
+  letter-spacing: 0.005em;
 }
 
 .hero-content h1 {
   max-width: 780px;
-  font-size: clamp(2rem, 6vw, 4.2rem);
+  font-size: clamp(2.5rem, 6.5vw, 4.8rem);
   margin-top: -20px;
   margin-bottom: 16px;
+}
+
+.hero-content h1 em {
+  text-decoration: underline;
+  text-decoration-color: var(--yellow);
+  text-decoration-thickness: 5px;
+  text-underline-offset: 6px;
+}
+
+.section-heading h2 u {
+  text-decoration-color: var(--yellow);
+  text-decoration-thickness: 5px;
+  text-underline-offset: 5px;
 }
 
 .hero-text {
@@ -262,10 +327,22 @@ a {
 
 .eyebrow {
   margin: 0 0 12px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--yellow-dark);
+}
+
+.eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 26px;
+  height: 3px;
+  background: var(--yellow);
+  margin-right: 10px;
+  vertical-align: middle;
 }
 
 .hero-actions {
@@ -280,11 +357,22 @@ a {
   align-items: center;
   justify-content: center;
   min-height: 48px;
-  padding: 12px 18px;
-  font-weight: 800;
+  padding: 12px 22px;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   text-decoration: none;
   border: 2px solid var(--black);
   cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, color 0.18s ease;
+}
+
+.button:hover,
+.button:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(13, 13, 13, 0.18);
 }
 
 .button.primary {
@@ -292,9 +380,17 @@ a {
   background: var(--yellow);
 }
 
+.button.primary:hover {
+  background: #f6bb1e;
+}
+
 .button.secondary {
   color: var(--white);
   background: var(--black);
+}
+
+.button.secondary:hover {
+  color: var(--yellow);
 }
 
 .hero-panel,
@@ -313,12 +409,17 @@ a {
 .panel-title,
 .service-card h3 {
   margin: 0 0 12px;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
 }
 
 .about-list h3 {
   margin: 0 0 16px;
-  font-size: 1.4rem;
+  font-size: 1.7rem;
+}
+
+.about-list,
+.contact-card {
+  border-top: 6px solid var(--yellow);
 }
 
 .hero-panel ul,
@@ -345,7 +446,7 @@ a {
 .section-heading h2,
 .about-copy h2,
 .contact h2 {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2.2rem, 4.2vw, 3.4rem);
 }
 
 .section-heading p,
@@ -397,7 +498,7 @@ a {
 }
 
 .service-card-front {
-  background: var(--white);
+  background: linear-gradient(180deg, #ffffff 0%, #faf7f0 100%);
   border-top: 4px solid var(--yellow);
 }
 
@@ -437,7 +538,10 @@ a {
 
 .quote {
   max-width: none;
-  background: var(--black);
+  background:
+    repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.025) 0 2px, transparent 2px 16px),
+    var(--black);
+  border-top: 6px solid var(--yellow);
   color: var(--white);
 }
 
@@ -503,10 +607,13 @@ a {
 }
 
 .site-footer {
-  padding: 28px 20px;
-  color: var(--white);
+  padding: 30px 20px;
+  color: #d6d1c4;
   text-align: center;
   background: var(--black);
+  border-top: 4px solid var(--yellow);
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
 }
 
 .site-footer p {
@@ -667,6 +774,7 @@ a {
     gap: 0;
     background: var(--white);
     border: 1px solid var(--line);
+    border-top: 4px solid var(--yellow);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
     padding: 4px 20px;
   }
